@@ -1,0 +1,32 @@
+{
+  "name": "bptracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon build/src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b00000001/BPTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b00000001/BPTracker/issues"
+  },
+  "homepage": "https://github.com/b00000001/BPTracker#readme",
+  "dependencies": {
+    "inquirer": "^9.0.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^8.20.0"
+  }
+}
