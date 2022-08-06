@@ -1,23 +1,20 @@
-<div class='h-100 d-flex flex-column flex-grow-1 border border-primary'>
-  <div class='w-100 h-auto'>
-    <div id='pageheader' class='w-100 h-50 bg-dark justify-content-center'>
+<div class='h-100 w-100'>
+  <div class='w-100'>
+    <div id='pageheader' class='w-100 h-50 bg-dark d-flex justify-content-center'>
       <h1 class='text-white'>Blood Pressure Tracker</h1>
     </div>
     <div>
-      <div
-        id='homebody'
-        class='input-group d-flex flex-column justify-content-center px-2'
-      >
-        <span class='input-type-text'>Please enter your name:</span>
-        <div class='d-flex'>
-          <input
-            type='text'
-            class='form-control w-50'
-            oninput='testFunction()'
-            onsubmit="submitFunction()"
-          />
-          <button class='w-25 ml-3' type='submit'>Submit</button>
-        </div>
+      <div id='homebody' class='input-group d-flex flex-column justify-content-center px-2'>
+        <span class='input-type-text mt-2'>
+          <h4 id="namecolumn"></h4>
+        </span>
+        <form id='nameentryform' onsubmit="submitFunction(event)">
+          <div class="d-flex">
+            <input id='nameinputfield' type='text' style="margin-right: 10px;"
+              class='form-control w-auto bg-dark text-white' />
+            <button class='w-auto rounded' type='submit'>Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
