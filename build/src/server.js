@@ -10,6 +10,7 @@ var express_handlebars_1 = require("express-handlebars");
 var PORT = process.env.port || 3000;
 var app = (0, express_1.default)();
 app.use('/', index_1.default);
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../src/public')));
 app.engine('handlebars', (0, express_handlebars_1.engine)());
 app.set('view engine', 'handlebars');
 app.set('views', path_1.default.join(__dirname, '../../src/views/'));
