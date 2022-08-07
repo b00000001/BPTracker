@@ -8,8 +8,17 @@ const entrySaveBtn = document.getElementById('entrysavebutton');
 const systolic = document.getElementById('systolicVal');
 const diastolic = document.getElementById('diastolicVal');
 const entryDate = document.getElementById('entrydate');
-const days = ['Sunday', 'Monday', 'Tuesdsay', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const dateObj = new Date();
+let dateObj;
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesdsay',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
 let userData = {};
 
 if (userLocal) {
@@ -22,9 +31,26 @@ if (userLocal) {
   nameColumn.innerText = 'Please enter name:';
 }
 
+entryDate.onchange = () => {
+  dateObj = new Date(entryDate.value);
+};
+// [entryDate.value, systolic.value, diastolic.value]
 entrySaveBtn.onclick = (e) => {
   e.preventDefault();
-  userData[days[dateObj.getDay()] + dateObj.getDay()] = entryDate.value;
+  if (
+    JSON.parse(localStorage.getItem('userData'))[
+      days[dateObj.getDay()] + dateObj.getDate() + dateObj.getFullYear()
+    ]
+  ) {
+    userData[
+      days[dateObj.getDay()] + dateObj.getDate() + dateObj.getFullYear()
+    ].push([entryDate.value, systolic.value, diastolic.value]);
+  } else {
+    userData[
+      days[dateObj.getDay()] + dateObj.getDate() + dateObj.getFullYear()
+    ] = [[entryDate.value, systolic.value, diastolic.value]];
+  }
+
   saveToLocal();
 };
 
