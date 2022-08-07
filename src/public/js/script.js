@@ -8,6 +8,9 @@ const entrySaveBtn = document.getElementById('entrysavebutton');
 const systolic = document.getElementById('systolicVal');
 const diastolic = document.getElementById('diastolicVal');
 const entryDate = document.getElementById('entrydate');
+const days = ['Sunday', 'Monday', 'Tuesdsay', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const dateObj = new Date();
+let userData = {};
 
 if (userLocal) {
   let usrName = JSON.parse(localStorage.getItem('userData')).name;
@@ -21,24 +24,21 @@ if (userLocal) {
 
 entrySaveBtn.onclick = (e) => {
   e.preventDefault();
-  userData.entrydate = entryDate.value;
-  userData.systolic = systolic.value;
-  userData.diastolic = diastolic.value;
+  userData[days[dateObj.getDay()] + dateObj.getDay()] = entryDate.value;
   saveToLocal();
 };
 
 const submitFunction = (e) => {
-  let userData = {};
   e.preventDefault();
   nameColumn.innerHTML = `<h2>${nameInput.value}'s bloodpressure tracker:</h2>`;
   userData.name = nameInput.value.trim();
-  saveToLocal(userData);
+  saveToLocal();
   nameForm.style.visibility = 'hidden';
   bpTrackerForm.style.visibility = 'visible';
 };
 // function for saving data to localstorage.
-const saveToLocal = (usrData) => {
-  localStorage.setItem('userData', JSON.stringify(usrData));
+const saveToLocal = () => {
+  localStorage.setItem('userData', JSON.stringify(userData));
   console.log(
     `
    Saving items to local storage... 
